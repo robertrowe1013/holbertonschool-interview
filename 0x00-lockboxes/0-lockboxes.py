@@ -6,6 +6,8 @@ def canUnlockAll(boxes):
     unlockedBoxes = set([0])
     for keys in boxes[0]:
         openBox(keys, unlockedBoxes, boxes)
+    if boxes is None or len(boxes) < 1:
+        return True
     if len(boxes) == len(unlockedBoxes):
         return True
     return False
