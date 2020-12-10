@@ -17,5 +17,5 @@ def openBox(keys, unlockedBoxes, boxes):
     """open box, if contains key to unopened box, open that box"""
     if keys < (len(boxes)) and keys not in unlockedBoxes:
         unlockedBoxes.add(keys)
-        for keys in boxes[keys]:
-            openBox(keys, unlockedBoxes, boxes)
+        for key in boxes[keys]:
+            openBox(key, unlockedBoxes, boxes)
