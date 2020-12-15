@@ -1,4 +1,6 @@
 #include "lists.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
   * insert_node - insert node
@@ -10,5 +12,6 @@
 
 listint_t *insert_node(listint_t **head, int number)
 {
+    number = 0;
     return (*head);
 }
