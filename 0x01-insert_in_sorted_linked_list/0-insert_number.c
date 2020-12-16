@@ -6,7 +6,7 @@
   * insert_node - insert node
   * @head: head of linked list
   * @number: number to insert
-  * 
+  *
   * Return: linked list
   */
 
@@ -14,6 +14,7 @@ listint_t *insert_node(listint_t **head, int number)
 {
 	listint_t *newNode;
 	listint_t *current;
+	listint_t *prev;
 
 	current = *head;
 
@@ -23,22 +24,23 @@ listint_t *insert_node(listint_t **head, int number)
 		return (NULL);
 	}
 
-	newNode->n = nunmber;
+	newNode->n = number;
 	newNode->next = NULL;
 
 	if (*head == NULL)
 	{
-		*head = new;
+		*head = newNode;
 	}
 	else
 	{
-		while (current->next != NULL || current->n < number)
+		while (current->next != NULL && current->n < number)
 		{
+			prev = current;
 			current = current->next;
 		}
-		newNode->next = current->next;
-		current->next = newNode;
+		prev->next = newNode;
+		newNode->next = current;
 	}
 
-	return (newNode);	
+	return (newNode);
 }
