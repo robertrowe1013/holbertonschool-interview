@@ -2,7 +2,7 @@
 #include "binary_trees.h"
 
 /**
-  * bianry_tree_node - create node
+  * binary_tree_node - create node
   * @parent: parent
   * @value: value
   *
