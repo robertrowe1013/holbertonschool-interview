@@ -70,14 +70,14 @@ void cascade(int grid1[3][3])
 				tempGrid[i][j] += grid1[i][j];
 				if (tempGrid[i][j] > 3)
 					overflowFlag = 1;
-			}
-			if (overflowFlag == 1)
-			{
-				printf("=\n");
-				print_grid(tempGrid);
-				cascade(tempGrid);
 			}		
 		}
+	}
+	if (overflowFlag == 1)
+	{
+		printf("=\n");
+		print_grid(tempGrid);
+		cascade(tempGrid);
 	}
 }
 
