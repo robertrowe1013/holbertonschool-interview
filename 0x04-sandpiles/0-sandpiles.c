@@ -73,21 +73,18 @@ void cascade(int grid1[3][3])
 			}
 		}
 	}
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			grid1[i][j] = tempGrid[i][j];
+		}
+	}
 	if (overflowFlag == 1)
 	{
 		printf("=\n");
-		print_grid(tempGrid);
-		cascade(tempGrid);
-	}
-	else
-	{
-		for (i = 0; i < 3; i++)
-		{
-			for (j = 0; j < 3; j++)
-			{
-				grid1[i][j] = tempGrid[i][j];
-			}
-		}
+		print_grid(grid1);
+		cascade(grid1);
 	}
 }
 
