@@ -7,18 +7,18 @@
  */
 static void print_grid(int grid[3][3])
 {
-    int i, j;
+	int i, j;
 
-    for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 3; j++)
-        {
-            if (j)
-                printf(" ");
-            printf("%d", grid[i][j]);
-        }
-        printf("\n");
-    }
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			if (j)
+				printf(" ");
+			printf("%d", grid[i][j]);
+		}
+		printf("\n");
+	}
 }
 
 /**
@@ -46,7 +46,7 @@ void cascade(int grid1[3][3])
 					if (tempGrid[i][j - 1] > 3)
 						overflowFlag = 1;
 				}
-				if (j < 3)
+				if (j < 2)
 				{
 					tempGrid[i][j + 1] += 1;
 					if (tempGrid[i][j + 1] > 3)
@@ -58,7 +58,7 @@ void cascade(int grid1[3][3])
 					if (tempGrid[i - 1][j] > 3)
 						overflowFlag = 1;
 				}
-				if (i < 3)
+				if (i < 2)
 				{
 					tempGrid[i + 1][j] += 1;
 					if (tempGrid[i + 1][j] > 3)
@@ -70,7 +70,7 @@ void cascade(int grid1[3][3])
 				tempGrid[i][j] += grid1[i][j];
 				if (tempGrid[i][j] > 3)
 					overflowFlag = 1;
-			}		
+			}
 		}
 	}
 	if (overflowFlag == 1)
@@ -78,6 +78,16 @@ void cascade(int grid1[3][3])
 		printf("=\n");
 		print_grid(tempGrid);
 		cascade(tempGrid);
+	}
+	else
+	{
+		for (i = 0; i < 3; i++)
+		{
+			for (j = 0; j < 3; j++)
+			{
+				grid1[i][j] = tempGrid[i][j];
+			}
+		}
 	}
 }
 
