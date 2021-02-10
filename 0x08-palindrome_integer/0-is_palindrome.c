@@ -11,6 +11,10 @@
 
 int is_palindrome(unsigned long n)
 {
+    unsigned long int remainder = 0;
+    unsigned long int reverse = 0;
+    unsigned long int temp = n;
+
 	if (n < 10)
 	{
 		return (1);
