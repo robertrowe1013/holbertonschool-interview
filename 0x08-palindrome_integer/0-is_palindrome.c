@@ -10,9 +10,9 @@
 
 int is_palindrome(unsigned long n)
 {
-    if (n < 10)
-    {
-        return(1);
-    }
-    return(0);
+	if (n < 10)
+	{
+		return (1);
+	}
+	return (0);
 }
