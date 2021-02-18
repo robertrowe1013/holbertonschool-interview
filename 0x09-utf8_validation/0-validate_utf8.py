@@ -8,17 +8,15 @@ def validUTF8(data):
 
     if type(data) is not list:
         return False
-    for num in data:
-        if type(num) is not int:
-            return False
-    dataList = []
+
+    byteList = []
 
     for num in data:
         try:
-            dataList.append(num.to_bytes(1, 'big'))
+            byteList.append(num.to_bytes(1, 'big'))
         except OverflowError:
-            dataList.append(num.to_bytes(2, 'big'))
-        test = b''.join(dataList)
+            byteList.append(num.to_bytes(2, 'big'))
+    test = b''.join(byteList)
 
     try:
         test.decode('utf-8')
