@@ -11,4 +11,6 @@ def validUTF8(data):
     for num in data:
         if type(num) is not int:
             return False
+        if num < 0:
+            return False
     return True
