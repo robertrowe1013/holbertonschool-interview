@@ -11,12 +11,26 @@
 
 int slide_line(int *line, size_t size, int direction)
 {
+	int i;
+	int idx = 0;
+	int linesize = size;
+
 	if (line == NULL)
 	{
 		return (0);
 	}
 	if (direction == SLIDE_LEFT)
 	{
+		for (i = 0; i < linesize; i++)
+		{
+			if (line[i] != 0)
+			{
+				if (line[i] == line[idx])
+				{
+					line[i] = line[idx];
+				}
+			}
+		}
 		return (1);
 	}
 	if (direction == SLIDE_RIGHT)
