@@ -42,13 +42,15 @@ void shift_left(int *line, int size)
 {
 	int i, idx;
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < size - 1; i++)
 	{
 		if (line[i] == 0)
 		{
 			idx = i + 1;
-			while (line[idx] == 0 && idx < size)
+			while (line[idx] == 0 && idx < size - 1)
+			{
 				idx += 1;
+			}
 			line[i] = line[idx];
 			line[idx] = 0;
 		}
@@ -65,7 +67,7 @@ void merge_left(int *line, int size)
 {
 	int i;
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < size - 1; i++)
 	{
 		if (line[i] == line[i + 1])
 		{
