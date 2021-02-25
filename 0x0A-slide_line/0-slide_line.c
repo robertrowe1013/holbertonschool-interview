@@ -13,7 +13,7 @@ int slide_line(int *line, size_t size, int direction)
 {
 	int linesize = size;
 
-	if (line == NULL || size == 0)
+	if (line == NULL)
 		return (0);
 	if (direction == SLIDE_LEFT)
 	{
@@ -90,7 +90,7 @@ void shift_right(int *line, int size)
 		if (line[i] == 0)
 		{
 			idx = i - 1;
-			while (line[idx] == 0)
+			while (line[idx] == 0 && idx > 0)
 				idx -= 1;
 			line[i] = line[idx];
 			line[idx] = 0;
