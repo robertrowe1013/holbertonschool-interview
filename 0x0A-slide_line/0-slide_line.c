@@ -11,41 +11,54 @@
 
 int slide_line(int *line, size_t size, int direction)
 {
-	int i;
-	int idx = 0;
 	int linesize = size;
 
 	if (line == NULL)
-	{
 		return (0);
-	}
 	if (direction == SLIDE_LEFT)
 	{
-		for (i = 0; i < linesize; i++)
-		{
-			if (line[i] != 0)
-			{
-				if (line[i] == line[idx])
-				{
-					line[i] = line[idx];
-				}
-			}
-		}
+		slide_left(line, size);
+		merge_left(line, size);
+		slide_left(line, size);
 		return (1);
 	}
 	if (direction == SLIDE_RIGHT)
 	{
-		for (i = 0; i < linesize; i++)
-		{
-			if (line[i] != 0)
-			{
-				if (line[i] == line[idx])
-				{
-					line[i] = line[idx];
-				}
-			}
-		}
+		slide_right(line, size);
+		merge_right(line, size);
+		slide_right(line, size);
 		return (1);
 	}
 	return (0);
+}
+
+void shift_left(int *line, int size)
+{
+	int i, idx = 0;
+
+	for (i = 0; i < size; i++)
+	{
+		if (line[i] == 0)
+		{
+			idx = i + 1;
+			while (line[idx] == 0)
+				idx += 1;
+			line[i] = line[idx]
+			line[idx] = 0;
+		}
+	}
+}
+
+void merge_left(int *line, int size)
+{
+	int i;
+
+	for (i = 0; i < size; i++)
+	{
+		if (line[i] == line[i + 1])
+		{
+			line[i] *= 2;
+			line[i + 1] = 0;
+		}
+	}
 }
