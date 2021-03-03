@@ -17,43 +17,57 @@ int slide_line(int *line, size_t size, int direction)
 		return (0);
 	if (direction == SLIDE_LEFT)
 	{
-		slide_left(line, size);
-		merge_left(line, size);
-		slide_left(line, size);
+		shift_left(line, linesize);
+		merge_left(line, linesize);
+		shift_left(line, linesize);
 		return (1);
 	}
 	if (direction == SLIDE_RIGHT)
 	{
-		slide_right(line, size);
-		merge_right(line, size);
-		slide_right(line, size);
+		shift_right(line, linesize);
+		merge_right(line, linesize);
+		shift_right(line, linesize);
 		return (1);
 	}
 	return (0);
 }
 
+/**
+  * shift_left - shift non-zeros to the left
+  * @line: line
+  * @size: size
+  */
+
 void shift_left(int *line, int size)
 {
 	int i, idx;
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < size - 1; i++)
 	{
 		if (line[i] == 0)
 		{
 			idx = i + 1;
-			while (line[idx] == 0)
+			while (line[idx] == 0 && idx < size - 1)
+			{
 				idx += 1;
+			}
 			line[i] = line[idx];
 			line[idx] = 0;
 		}
 	}
 }
 
+/**
+  * merge_left - combine like items to the left
+  * @line: line
+  * @size: size
+  */
+
 void merge_left(int *line, int size)
 {
 	int i;
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < size - 1; i++)
 	{
 		if (line[i] == line[i + 1])
 		{
@@ -63,16 +77,22 @@ void merge_left(int *line, int size)
 	}
 }
 
+/**
+  * shift_right - shift non-zeros to the right
+  * @line: line
+  * @size: size
+  */
+
 void shift_right(int *line, int size)
 {
 	int i, idx;
 
-	for (i = size -1; i > 0; i--)
+	for (i = size - 1; i > 0; i--)
 	{
 		if (line[i] == 0)
 		{
 			idx = i - 1;
-			while (line[idx] == 0)
+			while (line[idx] == 0 && idx > 0)
 				idx -= 1;
 			line[i] = line[idx];
 			line[idx] = 0;
@@ -80,6 +100,11 @@ void shift_right(int *line, int size)
 	}
 }
 
+/**
+  * merge_right - combine like items to the right
+  * @line: line
+  * @size: size
+  */
 void merge_right(int *line, int size)
 {
 	int i;
