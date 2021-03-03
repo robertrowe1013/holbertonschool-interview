@@ -8,12 +8,9 @@
 
 void menger(int level)
 {
-	if (isdigit(level))
-	{
-		if (level == 0)
-			printf("#\n");
-		if (level == 1)
-			printf("###\n# #\n###\n");
-	}
+	if (level == 0)
+		printf("#\n");
+	if (level == 1)
+		printf("###\n# #\n###\n");
 }
 
