@@ -60,5 +60,4 @@ if __name__ == "__main__":
         for j in range(0, N):
             if board[i][j] == 1:
                 solution_list.append([i, j])
-    print(solution_list)
-    
+    print(solution_list)    
