@@ -20,7 +20,7 @@ def attacked(queens, i, j):
     return True
 
 
-def nqueen(rows, queens = [], j = 0):
+def nqueen(rows, queens=[], j=0):
     """
     place queen
     """
