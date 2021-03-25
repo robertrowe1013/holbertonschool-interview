@@ -50,7 +50,6 @@ avl_t *branch(int *array, int start, int end, avl_t *tree)
 	if (node == NULL)
 		return (NULL);
 	mid = (start + end) / 2;
-	printf("start: %d, end: %d, mid: %d, array mid: %d\n", start, end, mid, array[mid]);
 	node->n = array[mid];
 	node->parent = tree;
 	node->left = branch(array, start, mid - 1, node);
