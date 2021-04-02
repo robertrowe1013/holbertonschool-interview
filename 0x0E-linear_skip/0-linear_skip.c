@@ -1,4 +1,4 @@
-#include "serach.h"
+#include "search.h"
 
 /**
   * linear_skip - search thru skip list
