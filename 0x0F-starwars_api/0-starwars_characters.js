@@ -14,7 +14,7 @@ request(url, function (error, response, body)
         const chars = JSON.parse(body).characters;
         for (let i = 0; i < chars.length; i++)
         {
-            request(cahrs[i], function (error, response, body)
+            request(chars[i], function (error, response, body)
             {
                 if (error)
                 {
