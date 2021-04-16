@@ -3,6 +3,7 @@
 how much rain
 """
 
+
 def rain(walls):
     """is trapped in the walls"""
     trappedrain = 0
