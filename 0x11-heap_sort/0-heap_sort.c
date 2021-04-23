@@ -79,5 +79,6 @@ void swap(int *arr, int *parent, int *child)
 	*child = tmp;
 	for (i = 0; arr[i]; i++)
 		continue;
-	print_array(arr, i);
+	if (parent != child)
+		print_array(arr, i);
 }
