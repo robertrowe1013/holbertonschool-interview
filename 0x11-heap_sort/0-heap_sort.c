@@ -66,7 +66,6 @@ void heapify(int *arr, size_t size, size_t root)
   * @arr: array
   * @parent: parent
   * @child: child
-  * @arr_size: array size
   */
 
 void swap(int *arr, int *parent, int *child)
