@@ -6,12 +6,14 @@ import requests
 def count_words(subreddit, word_list, next=None, count={}):
     """Count words in word_list in subreddit"""
     if next is None:
-        subreddit_URL = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
+        subred_URL = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     else:
-        subreddit_URL = 'https://www.reddit.com/r/{}/hot.json?after={}'.format(subreddit, next)
-    subreddit_req = requests.get(subreddit_URL, headers={"user-agent": "user"}, allow_redirects=False)
+        subred_URL = 'https://www.reddit.com/r/{}/hot.json?after={}'.format(
+            subreddit, next)
+    subreddit_req = requests.get(subreddit_URL,
+                                 headers={"user-agent": "user"},
+                                 allow_redirects=False)
     try:
         data = subreddit_req.json().get("data")
     except:
         return
-    
