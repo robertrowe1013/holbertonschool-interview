@@ -32,6 +32,6 @@ def count_words(subreddit, word_list, after=None, count={}):
     if after is not None:
         return count_words(subreddit, word_list, after, count)
     else:
-        for item in sorted(count.items(), key=lambda i: (-i[1], i[0])):
-            if item[1] != 0:
-                print('{}: {}'.format(item[0], item[1]))
+        for item in sorted(count):
+            if count[item] != 0:
+                print(item, count[item])
