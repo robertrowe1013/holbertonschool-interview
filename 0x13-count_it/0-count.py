@@ -31,3 +31,4 @@ def count_words(subreddit, word_list, after=None, count={}):
     after = data.get("after")
     if after is not None:
         return count_words(subreddit, word_list, after, count)
+    print(count)
