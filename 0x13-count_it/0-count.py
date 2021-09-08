@@ -5,11 +5,11 @@ import requests
 
 def count_words(subreddit, word_list, after=None, count={}):
     """Count words in word_list in subreddit"""
-    if next is None:
+    if after is None:
         subred_URL = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     else:
         subred_URL = 'https://www.reddit.com/r/{}/hot.json?after={}'.format(
-            subreddit, next)
+            subreddit, after)
     subreddit_req = requests.get(subred_URL,
                                  headers={"user-agent": "user"},
                                  allow_redirects=False)
@@ -29,6 +29,7 @@ def count_words(subreddit, word_list, after=None, count={}):
             word = word.lower()
             count[word] += title.count(word)
     after = data.get("after")
+    print(count)
+    print(after)
     if after is not None:
         return count_words(subreddit, word_list, after, count)
-    print(count)
