@@ -34,4 +34,4 @@ def count_words(subreddit, word_list, after=None, count={}):
     else:
         for item in sorted(count):
             if count[item] != 0:
-                print(item, count[item])
+                print(item + ': ' + str(count[item]))
