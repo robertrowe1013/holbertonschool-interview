@@ -32,6 +32,7 @@ def count_words(subreddit, word_list, after=None, count={}):
     if after is not None:
         return count_words(subreddit, word_list, after, count)
     else:
-        for item in sorted(count):
-            if count[item] != 0:
-                print(item + ': ' + str(count[item]))
+        sorted_subs = sorted(count.items(), key=lambda x: x[1], reverse=True)
+        for i in sorted_subs:
+            if i[1] != 0:
+                print(i[0] + ": " + str(i[1]))
