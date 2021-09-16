@@ -9,22 +9,44 @@
 
 int heap_extract(heap_t **root)
 {
-	int value;
+	int value, height;
+	heap_t *top;
 
-	if (root == NULL || *root == NULL)
+	if (root == NULL || (*root) == NULL)
 	{
 		return (0);
 	}
-	value = (*root)->n;
-	if ((*root)->left == NULL && (*root)->right == NULL)
+	top = *root;
+	value = top->n;
+
+	if (top->left == NULL && top->right == NULL)
 	{
 		*root = NULL;
 	}
+	else
+	{
+		height = find_height(*root, 1);
+		top = get_top(*root, height, 1);
+		(*root)->n = top->n;
+		if (top->parent->right == top)
+		{
+			top->parent->right = NULL;
+		}
+		else
+		{
+			top->parent->left = NULL;
+		}
+		heapify(*root);
+	}
+	free(top);
 
 	return (value);
 }
 
-
+/**
+  * heapify - heapify the heap
+  * @node: node to start
+  */
 
 void heapify(heap_t *node)
 {
@@ -48,4 +70,61 @@ void heapify(heap_t *node)
 		max->n = tmp;
 		heapify(max);
 	}
+}
+
+/**
+  * find_height - find heap height
+  * @node: node to start
+  * @height: height of start node
+  *
+  * Return: heap height
+  */
+
+int find_height(heap_t *node, int height)
+{
+	int left, right;
+
+	if (node == NULL)
+	{
+		return (height - 1);
+	}
+	height++;
+	left = find_height(node->left, height);
+	right = find_height(node->right, height);
+	if (left > right)
+	{
+		return (left);
+	}
+
+	return (right);
+}
+
+/**
+  * get_top - get new top
+  * @node: node to start
+  * @height: heap height
+  * @node_height: node height
+  *
+  * Return: new top
+  */
+
+heap_t *get_top(heap_t *node, int height, int node_height)
+{
+	heap_t *tmp;
+
+	if (node_height >= height - 1)
+	{
+		if (node->right != NULL)
+		{
+			return (node->right);
+		}
+		return (node->left);
+	}
+	tmp = get_top(node->right, height, node_height + 1);
+	if (tmp != NULL)
+	{
+		return (tmp);
+	}
+
+	return (get_top(node->left, height, node_height + 1));
 }

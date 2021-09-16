@@ -2,6 +2,7 @@
 #define _BINARY_TREES_H_
 
 #include <stddef.h>
+#include <stdlib.h>
 
 /**
  * struct binary_tree_s - Binary tree node
@@ -23,5 +24,8 @@ typedef struct binary_tree_s binary_tree_t;
 typedef struct binary_tree_s heap_t;
 void binary_tree_print(const binary_tree_t *);
 int heap_extract(heap_t **root);
+void heapify(heap_t *node);
+int find_height(heap_t *node, int height);
+heap_t *get_top(heap_t *node, int height, int node_height);
 
 #endif /* _BINARY_TREES_H_ */
