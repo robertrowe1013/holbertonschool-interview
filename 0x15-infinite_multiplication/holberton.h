@@ -10,4 +10,4 @@ int _puts(char *str);
 int _strlen(char *str);
 int _isdigit(char *str);
 
-#endif //HOLBERTON_H//
+#endif /*HOLBERTON_H*/
