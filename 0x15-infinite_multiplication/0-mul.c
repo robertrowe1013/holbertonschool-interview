@@ -21,9 +21,15 @@ int main(int argc, char *argv[])
 	product = mul(argv[1], argv[2]);
 	len = _strlen(product);
 	len--;
-	if (product[len] == '0')
+	while (product[len] == '0')
 	{
 		len--;
+	}
+	if (len == -1)
+	{
+		_putchar('0');
+		_putchar('\n');
+		return (0);
 	}
 	for (i = len; i >= 0; i--)
 	{
