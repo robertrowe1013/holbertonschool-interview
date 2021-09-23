@@ -20,11 +20,12 @@ int main(int argc, char *argv[])
 	}
 	product = mul(argv[1], argv[2]);
 	len = _strlen(product);
-	while (len >= 0 && (product[len] == '0'))
+	len--;
+	if (product[len] == '0')
 	{
 		len--;
 	}
-	for (i = len + 1; i >= 0; i--)
+	for (i = len; i >= 0; i--)
 	{
 		_putchar(product[i]);
 	}
