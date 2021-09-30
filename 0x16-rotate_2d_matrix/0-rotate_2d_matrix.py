@@ -8,9 +8,11 @@ def rotate_2d_matrix(matrix):
     """
     rotate matrix
     """
-    for i in range(len(matrix)):
-        for i2 in range(i, len(matrix)):
-            if i != i2:
-                matrix[i][i2], matrix[i2][i] = matrix[i2][i], matrix[i][i2]
-        for i in matrix:
-            i.reverse()
+    size = len(matrix) - 1
+    for i in range(size):
+        for j in range(i, size):
+            temp = matrix[i][j]
+            matrix[i][j] = matrix[size - j][i]
+            matrix[size - j][i] = matrix[size - i][size - j]
+            matrix[size - i][size - j] = matrix[j][size - i]
+            matrix[j][size - i] = temp
