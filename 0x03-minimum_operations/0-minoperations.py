@@ -4,7 +4,19 @@
 
 def minOperations(n):
     """ number of min ops """
-    if n < 1:
+    if n < 2:
         return 0
-    else:
-        return n
+
+    ops = 0
+    total = 1
+    copied = 0
+
+    while total < n:
+        if n % total == 0:
+            copied = total
+            ops += 1
+        total += copied
+        ops += 1
+    if total == n:
+        return ops
+    return 0
